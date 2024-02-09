@@ -17,7 +17,7 @@
     @method($property->exists ? 'PUT' : 'POST')
 
 
-    {{-- <div class="row row-cols-3">
+    <div class="row row-cols-3">
         @include('shared.input', ['class' => 'col','label'=>'Titre','name'=>'title','value' => $property->title])
         @include('shared.input', ['class' => 'col','label'=>'Surface','name'=>'surface','value' =>
         $property->surface])
@@ -37,7 +37,7 @@
         @include('shared.input', ['class' => 'col','label'=>'Ville','name'=>'city','value' => $property->city])
         @include('shared.input', ['class' => 'col','label'=>'Code Postal','name'=>'postal_code','value' =>
         $property->postal_code])
-    </div> --}}
+    </div>
     {{-- @include('shared.checkbox', ['name'=>'sold','label'=>'Vendu','value' => $property->sold]) --}}
 
     <button class="btn btn-primary mt-3">
