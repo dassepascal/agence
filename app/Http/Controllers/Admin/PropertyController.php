@@ -18,7 +18,7 @@ class PropertyController extends Controller
         //     'properties' => Property::orderBy('created_at', 'desc')->paginate(25)->get(),
         // ]) ;
         $properties = Property::orderBy('created_at', 'desc')->paginate(25);
-        return view('admin.properties.index',[
+        return view('admin.properties.index', [
             'properties' => $properties
         ]);
     }
@@ -29,7 +29,18 @@ class PropertyController extends Controller
     public function create()
     {
         $property = new Property();
-return view('admin.properties.form',['property' => $property]);
+        $property->fill([
+
+           'surface'=>85,
+            'bedrooms' => 1,
+           'floor' => 1,
+           'postal_code' => '75000',
+              'city' => 'Paris',
+              'solde' => false,
+
+
+        ]);
+        return view('admin.properties.form', ['property' => $property]);
 
     }
 
@@ -38,22 +49,8 @@ return view('admin.properties.form',['property' => $property]);
      */
     public function store(PropertyFormRequest $request)
     {
-       $request->validated();
-         $property = new Property();
-            $property->name = $request->name;
-            $property->description = $request->description;
-            $property->price = $request->price;
-            $property->bedrooms = $request->bedrooms;
-            $property->floor = $request->floor;
-            $property->price = $request->price;
-            $property->rooms = $request->rooms;
-            $property->surface = $request->surface;
-            $property->city = $request->city;
-            $property->adress = $request->adress;
-            $property->postal_code = $request->postal_code;
-            $property->sold = $request->sold;
-            $property->save();
-return redirect()->route('admin.property.index')->with('message', 'Property created successfully');
+        $property = Property::create($request->validated());
+        return redirect()->route('admin.property.index')->with('message', 'Property created successfully');
 
     }
 

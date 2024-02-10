@@ -29,8 +29,8 @@
             <td>{{ number_format( $property->price, thousands_separator: '')}}</td>
             <td>{{ $property->city }}</td>
             <td class="text-end">
-                <a href="{{ route('admin.properties.edit', $property->id) }}" class="btn btn-primary">Modifier</a>
-                <form action="{{ route('admin.properties.destroy', $property->id) }}" method="post" class="d-inline">
+                <a href="#" class="btn btn-primary">Modifier</a>
+                <form action="#" method="post" class="d-inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Supprimer</button>

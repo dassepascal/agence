@@ -7,16 +7,9 @@
 
 <h1 class="h3">@yield ('title')</h1>
 <form class="vstack gap-2"
-    action="{{ route($property->exists ? 'admin.property.update' : 'admin.property.store', $property) }}"
-    method="post">
-
-
-
+    action="{{ route($property->exists ? 'admin.property.update' : 'admin.property.store', $property) }}" method="post">
     @csrf
-
     @method($property->exists ? 'PUT' : 'POST')
-
-
     <div class="row row-cols-3">
         @include('shared.input', ['class' => 'col','label'=>'Titre','name'=>'title','value' => $property->title])
         @include('shared.input', ['class' => 'col','label'=>'Surface','name'=>'surface','value' =>
@@ -38,7 +31,7 @@
         @include('shared.input', ['class' => 'col','label'=>'Code Postal','name'=>'postal_code','value' =>
         $property->postal_code])
     </div>
-    {{-- @include('shared.checkbox', ['name'=>'sold','label'=>'Vendu','value' => $property->sold]) --}}
+    @include('shared.checkbox', ['name'=>'sold','label'=>'Vendu','value' => $property->sold])
 
     <button class="btn btn-primary mt-3">
         @if ($property->exists)
@@ -52,8 +45,4 @@
 
 
 
-
-
-</form>
-</div>
 @endsection
