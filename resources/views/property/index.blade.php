@@ -14,17 +14,22 @@
             Rechercher
         </button>
 
-    </form> 
+    </form>
 </div>
 
 <div class="container mt-2">
-    <div class="row">
-        @foreach ($properties as $property )
+    <div class="row bg-danger">
+        @forelse ($properties as $property )
         <div class="col-3 mb-4">
             @include('property.card')
         </div>
+        @empty
+        <div class=" col-12  bg-success text-center
+        ">
+          Aucun bien immobilier trouvé
+        </div>
 
-        @endforeach
+        @endforelse
     </div>
 
 
