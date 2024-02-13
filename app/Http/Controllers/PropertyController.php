@@ -12,17 +12,17 @@ class PropertyController extends Controller
     {
 
          $query = Property::query();
-        if($request->has('price')){
-           $query = $query->where('price', '<=', $request->input('price'));
+        if($price = $request->validated('price')){
+           $query = $query->where('price', '<=', $price);
         }
-        if($request->has('surface')){
-            $query = $query->where('surface', $request->input('surface'));
+        if($surface = $request->validated('surface')){
+            $query = $query->where('surface', $surface);
         }
-        if($request->has('rooms')){
-            $query = $query->where('rooms', $request->input('rooms'));
+        if($rooms = $request->validated('rooms')){
+            $query = $query->where('rooms', $rooms);
         }
-        if($request->has('title')){
-            $query = $query->where('title','like', "%{$request->input('title')} %");
+        if($title = $request->validated('title')){
+            $query = $query->where('title','like', "%{$title} %");
         }
 
 
