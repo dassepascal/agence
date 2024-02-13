@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Property;
 use App\Observers\PropertyObserver;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Property::observe(PropertyObserver::class);
+        Paginator::useBootstrapFive();
     }
 }

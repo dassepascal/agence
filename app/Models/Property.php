@@ -2,9 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Option;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+/**
+ * @mixin IdeHelperProperty
+ */
 class Property extends Model
 {
     use HasFactory;
@@ -20,5 +26,15 @@ class Property extends Model
         'adress',
         'postal_code',
         'sold',
+        // 'options'=>['array','exists:options,id']
     ];
+
+    public function Options(): BelongsToMany
+    {
+        return $this->belongsToMany(Option :: class);
+    }
+
+    // public function getSlug(){
+    //     return Str::slug($this->title);
+    // }
 }
