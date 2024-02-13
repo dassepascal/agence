@@ -8,26 +8,27 @@ use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
-    public function index()
+    public function index(SearchPropertiesRequest $request)
     {
 
-        // $query = Property::query();
-        // if($price =$request->validated('price')){
-        //    $query = $query->where('price', '<=', $price);
+         $query = Property::query();
+        if($request->has('price')){
+           $query = $query->where('price', '<=', $request->input('price'));
+        }
+        // if($request->has('surface')){
+        //     $query = $query->where('surface', $request->input('surface'));
         // }
-        // if($surface = $request->validated('surface')){
-        //     $query = $query->where('surface', '<=', $surface);
+        // if($request->has('rooms')){
+        //     $query = $query->where('rooms', $request->input('rooms'));
         // }
-        // if($rooms = $request->validated('rooms')){
-        //     $query =   $query->where('rooms', '<=', $rooms);
-        // if($title = $request->validated('title')){
-        //     $query =  $query->where('title', 'like', "%{ $title}%");
+        // if($request->has('title')){
+        //     $query = $query->where('title', $request->input('title'));
         // }
-        $properties = Property::paginate(2);
+
 
         return view('property.index',[
-             'properties' => $properties,
-            // 'input'=> $request->validated()
+             'properties' => $query->paginate(2),
+             'input'=> $request->validated()
 
         ]);
     }
