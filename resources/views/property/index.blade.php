@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="bg-light p-5 mb-5 text-center">
-    {{-- <form action="" method="get" class="container d-flex gap-2">
+    <form action="" method="get" class="container d-flex gap-2">
         <input type="number" placeholder="Budget max" class="form-control" name="price" value="{{ $input['price'] ?? '' }}">
         <input type="number" placeholder="Surface min" class="form-control" name="surface" value="{{ $input['surface'] ?? '' }}">
         <input type="number" placeholder="Nombre de pièce min " class="form-control" name="rooms" value="{{ $input['rooms'] ?? '' }}">
@@ -14,7 +14,7 @@
             Rechercher
         </button>
 
-    </form> --}}
+    </form> 
 </div>
 
 <div class="container mt-2">
