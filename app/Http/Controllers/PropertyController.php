@@ -15,15 +15,15 @@ class PropertyController extends Controller
         if($request->has('price')){
            $query = $query->where('price', '<=', $request->input('price'));
         }
-        // if($request->has('surface')){
-        //     $query = $query->where('surface', $request->input('surface'));
-        // }
-        // if($request->has('rooms')){
-        //     $query = $query->where('rooms', $request->input('rooms'));
-        // }
-        // if($request->has('title')){
-        //     $query = $query->where('title', $request->input('title'));
-        // }
+        if($request->has('surface')){
+            $query = $query->where('surface', $request->input('surface'));
+        }
+        if($request->has('rooms')){
+            $query = $query->where('rooms', $request->input('rooms'));
+        }
+        if($request->has('title')){
+            $query = $query->where('title','like', "%{$request->input('title')} %");
+        }
 
 
         return view('property.index',[
