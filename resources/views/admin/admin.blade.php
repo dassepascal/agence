@@ -58,7 +58,7 @@
                 </div>
                 <div>
                     <button type="button" class="btn-close  " data-bs-dismiss="modal" aria-label="Close"
-                        onclick="document.getElementById('open').style.display='none'" console.log('tesdt')></button>
+                        onclick="document.getElementById('open').style.display='none'" ></button>
                 </div>
             </div>
             @endif

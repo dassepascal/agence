@@ -5,49 +5,49 @@
 @section('content')
 
 <div class="container mt-2">
+
     <h1>{{ $property->title }}</h1>
     <h2>{{ $property->rooms }} pièces - {{ $property->surface }} m² </h2>
 
     <div class="text-primary fw-bold" style="font-size: 4rem; ">
-        {{ number_format($property->price,thousands_separator:'') }} €
+        {{ $property->formatted_price }}
     </div>
 
+</div>
 
-
-    <hr>
-    {{-- <div class="mt-4">
-        <h4>Intéressé par ce bien</h4>
-        @include('shared.flash')
+<hr>
+<div class="container">
+    <div class="mt-4">
+        <h4>Intéressé par ce bien ?</h4>
         <form action="{{ route('property.contact',$property) }}" method="post" class="vstack gap-3">
             @csrf
             <div class="row">
-                @include('shared.input', ['class' => 'col','label' => 'Prénom', 'name' => 'firstname','value'=>'John' ])
-                @include('shared.input', ['class' => 'col','label' => 'Nom', 'name' => 'name','value'=>'Doe' ])
+                @include('shared.input', ['class'=>'col', 'name'=>'lastname', 'label'=>'Votre nom','value'=>'Dasse'])
+                @include('shared.input', ['class'=>'col', 'name'=>'firstname', 'label'=>'Votre prénom','value'=>'Pascal'])
             </div>
             <div class="row">
-                @include('shared.input', ['class' => 'col','label' => 'Téléphone', 'name' => 'phone','value'=>'01 23 45 67 89'])
-                @include('shared.input', ['class' => 'col','label' => 'Email', 'name' => 'email','value'=>'test@test.fr' ])
+                @include('shared.input', ['class'=>'col', 'name'=>'phone', 'label'=>'Votre téléphone','value'=>'1234567897'])
+                @include('shared.input', ['type'=> 'email','class'=>'col', 'name'=>'email', 'label'=>'Votre email','value'=>'pascaldasse@test.fr'])
             </div>
 
-            @include('shared.input', ['type' => 'textarea','class' => 'col','label' => 'Votre message', 'name' =>
-            'message','value'=>'Je suis intéressé par votre bien '
-            ])
+            @include('shared.input', ['type'=>'textarea','class'=>'col', 'name'=>'message', 'label'=>'Votre message','value'=>'Bonjour, je suis intéressé par votre bien '])
 
-            <button class="btn btn-primary mt-2">
-                Nous contacter
 
-            </button>
+            <div>
+                <button class="btn btn-primary">
+                    Nous contacter
+                </button>
+            </div>
         </form>
-    </div> --}}
-    {{-- <div class="mt-4">
-        <h2>Description</h2>
-        <p>{{nl2br($property->description)}}</p>
+    </div>
+    <div class="mt-4">
+        <p>{{ nl2br($property->description) }}</p>
         <div class="row">
             <div class="col-8">
                 <h2>Caractéristiques</h2>
-                <table class="table table-striped">
+                <table class="table table-stripe">
                     <tr>
-                        <td>surface habitable</td>
+                        <td>Surface habitable</td>
                         <td>{{ $property->surface }} m²</td>
                     </tr>
                     <tr>
@@ -60,31 +60,29 @@
                     </tr>
                     <tr>
                         <td>Etage</td>
-                        <td>{{ $property->floor ? : 'Rez de chaussé'}}</td>
+                        <td>{{ $property->floor ? : 'rez de chaussé'}}</td>
                     </tr>
                     <tr>
                         <td>Localisation</td>
-                        <td>{{ $property->address}}<br>{{ $property->city}}<br>{{ $property->postal_code }}</td>
-
+                        <td>
+                            {{ $property->adress }} <br/></td>
+                            <td>{{ $property->postal_code }} {{ $property->city }} </td>
                     </tr>
 
-                    </tr>
                 </table>
             </div>
-            <div class="col-4 ">
+            <div class="col-4">
                 <h2>Spécificités</h2>
                 <ul class="list-group">
-                    @forelse ($property->options as $option )
+                    @foreach ($property->options as $option )
                     <li class="list-group-item">{{ $option->name }}</li>
-                    @empty
-                    <li class="list-group-item">Aucune option</li>
-                    @endforelse
+                    @endforeach
+
                 </ul>
-
             </div>
-
         </div>
-    </div> --}}
+    </div>
 </div>
+
 
 @endsection

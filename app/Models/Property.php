@@ -37,4 +37,9 @@ class Property extends Model
     // public function getSlug(){
     //     return Str::slug($this->title);
     // }
+
+    public function getFormattedPriceAttribute(): string
+    {
+        return str_replace('.', ',', $this->price/100).'€';
+    }
 }

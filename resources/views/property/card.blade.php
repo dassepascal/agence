@@ -5,7 +5,22 @@
         </h5>
         <p class="card-text">{{  $property->surface }} m² - {{  $property->city }} {{ $property->postal_code }}</p>
         <div class="text-primary bold" style="font-size:1.4 rem">
-        {{ number_format( $property->price, thousands_separator: '')}} €
+        {{ $property->formatted_price }}
+        </div>
+        <div>
+            <p class="card-list">
+                @forelse ($property->options as $option )
+                <span class="badge bg-primary">{{ $option->name }}</span>
+                @empty
+                <span class="badge bg-primary">Aucune option</span>
+                @endforelse
+            </p>
+        </div>
+        <div  id='sold'>
+            {{ $property->sold ? 'Vendu' : 'Disponible' }}
+           
         </div>
     </div>
+
 </div>
+

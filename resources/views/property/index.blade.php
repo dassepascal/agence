@@ -18,7 +18,7 @@
 </div>
 
 <div class="container mt-2">
-    <div class="row bg-danger">
+    <div class="row ">
         @forelse ($properties as $property )
         <div class="col-3 mb-4">
             @include('property.card')

@@ -11,6 +11,9 @@ $class = null;
 if (!isset($name)) {
 $name = '';
 }
+if(!isset($value)){
+$value = '';
+}
 @endphp
 
 
