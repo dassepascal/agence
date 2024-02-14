@@ -19,29 +19,31 @@
 <div class="container">
     <div class="mt-4">
         <h4>Intéressé par ce bien ?</h4>
-        <form action="{{ route('property.contact',$property) }}" method="post" class="vstack gap-3">
-            @csrf
-            <div class="row">
-                @include('shared.input', ['class'=>'col', 'name'=>'lastname', 'label'=>'Votre nom','value'=>'Dasse'])
-                @include('shared.input', ['class'=>'col', 'name'=>'firstname', 'label'=>'Votre prénom','value'=>'Pascal'])
-            </div>
-            <div class="row">
-                @include('shared.input', ['class'=>'col', 'name'=>'phone', 'label'=>'Votre téléphone','value'=>'1234567897'])
-                @include('shared.input', ['type'=> 'email','class'=>'col', 'name'=>'email', 'label'=>'Votre email','value'=>'pascaldasse@test.fr'])
-            </div>
+@if (session('success'))
+   @include('shared.flash')
 
-            @include('shared.input', ['type'=>'textarea','class'=>'col', 'name'=>'message', 'label'=>'Votre message','value'=>'Bonjour, je suis intéressé par votre bien '])
-
-
-            <div>
-                <button class="btn btn-primary">
-                    Nous contacter
-                </button>
-            </div>
-        </form>
+@else
+<form action="{{ route('property.contact',$property) }}" method="post" class="vstack gap-3">
+    @csrf
+    <div class="row">
+        @include('shared.input', ['class'=>'col', 'name'=>'lastname', 'label'=>'Votre nom'])
+        @include('shared.input', ['class'=>'col', 'name'=>'firstname', 'label'=>'Votre prénom'])
+    </div>
+    <div class="row">
+        @include('shared.input', ['class'=>'col', 'name'=>'phone', 'label'=>'Votre téléphone'])
+        @include('shared.input', ['type'=> 'email','class'=>'col', 'name'=>'email', 'label'=>'Votre email'])
+    </div>
+    @include('shared.input', ['type'=>'textarea','class'=>'col', 'name'=>'message', 'label'=>'Votre message'])
+    <div>
+        <button class="btn btn-primary">
+            Nous contacter
+        </button>
+    </div>
+</form>
+@endif
     </div>
     <div class="mt-4">
-        <p>{{ nl2br($property->description) }}</p>
+        <p>Description : {{ nl2br($property->description) }}</p>
         <div class="row">
             <div class="col-8">
                 <h2>Caractéristiques</h2>

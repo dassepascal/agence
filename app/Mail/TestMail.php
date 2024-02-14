@@ -2,28 +2,23 @@
 
 namespace App\Mail;
 
-use App\Models\Property;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
 
-
-class PropertyContactMail extends Mailable
+class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-
 
     /**
      * Create a new message instance.
      */
-    public function __construct(public Property $property,public array  $data)
+    public function __construct()
     {
-        $this ->property = $property;
-        $this ->data = $data;
-
+        //
     }
 
     /**
@@ -32,10 +27,7 @@ class PropertyContactMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-
-            to:'admin@doe.fr',
-            replyTo: $this->data['email'],
-            subject: 'Property Contact Mail',
+            subject: 'Test Mail',
         );
     }
 
@@ -45,9 +37,9 @@ class PropertyContactMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.property.contact',
+            view: 'emails.test',
         );
-    }
+           }
 
     /**
      * Get the attachments for the message.

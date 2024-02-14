@@ -10,7 +10,7 @@
     {{-- bootstrap --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <title>@yield('title') | MonAgence</title>
-    
+
 </head>
 
 <body>
@@ -41,7 +41,7 @@
 
     {{-- bootstrap --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"> </script>
-
+<script src="js/main.js"></script>
 </body>
 
 </html>

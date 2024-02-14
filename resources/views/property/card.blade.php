@@ -17,8 +17,10 @@
             </p>
         </div>
         <div  id='sold'>
+            //todo : sold or not javascript
+            
             {{ $property->sold ? 'Vendu' : 'Disponible' }}
-           
+
         </div>
     </div>
 

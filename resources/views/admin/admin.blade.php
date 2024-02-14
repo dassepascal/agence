@@ -47,7 +47,7 @@
       </nav>
 
     <div class="container mt-5">
-        @php
+        {{-- @php
         use Illuminate\Support\Facades\Session;
         @endphp
         <div id='open'>
@@ -63,7 +63,8 @@
             </div>
             @endif
 
-        </div>
+        </div> --}}
+        @include('shared.flash')
 
         @yield('content')
     </div>
